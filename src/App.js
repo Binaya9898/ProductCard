@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import ShoppingCard from './ShoppingCard';
+import React, { useState } from 'react';
+
+
 
 function App() {
+
+  const [qtyVal,setQtyVal]=useState(1);
+  const[totalAmt,setTotalAmt]=useState(100);
+
+  //This is increament
+  function incQty(){
+    const qtyBtn=document.getElementById("qty-btn");
+    const total=document.getElementById("total-amt");
+    setQtyVal(qtyVal+1);
+    setTotalAmt(totalAmt+100);
+    qtyBtn.innerText=qtyVal+1;
+    total.innerText=totalAmt+100;
+
+    
+    
+  }
+  function decQty(){
+    if(qtyVal>1){
+      const qtyBtn=document.getElementById("qty-btn");
+      const total=document.getElementById("total-amt");
+      setQtyVal(qtyVal-1);
+      setTotalAmt(totalAmt-100);
+      qtyBtn.innerText=qtyVal-1;
+      total.innerText=totalAmt-100;
+
+    }
+    else{
+      setQtyVal(1);
+
+
+    }
+    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+    <ShoppingCard  incQty={incQty} decQty={decQty}></ShoppingCard>
+     </>
   );
 }
 
